@@ -15,6 +15,9 @@ class CreateCancionListaTable extends Migration
     {
         Schema::create('cancion_lista', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreign('lista_id')->references('id')->on('lista_reproduccion');
+            $table->foreign('cancion_id')->references('id')->on('cancion');
+            $table->dateTime('created_at');//TODO es necesario teniendo el campo de abajo?
             $table->timestamps();
         });
     }

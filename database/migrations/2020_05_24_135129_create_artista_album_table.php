@@ -15,7 +15,12 @@ class CreateArtistaAlbumTable extends Migration
     {
         Schema::create('artista_album', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreign('artista_id')->references('id')->on('artista');
+            $table->foreign('album_id')->references('id')->on('album');
+            $table->boolean('principal');
             $table->timestamps();
+
+            $table->unique(['artista_id', 'album_id']);
         });
     }
 

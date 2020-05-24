@@ -15,7 +15,12 @@ class CreateHistorialCancionTable extends Migration
     {
         Schema::create('historial_cancion', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('cancion_id')->references('id')->on('cancion');
+            $table->dateTime('date');
             $table->timestamps();
+
+            $table->unique(['user_id', 'cancion_id', 'date']);
         });
     }
 

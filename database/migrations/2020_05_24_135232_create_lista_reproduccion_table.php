@@ -15,6 +15,9 @@ class CreateListaReproduccionTable extends Migration
     {
         Schema::create('lista_reproduccion', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->dateTime('date_add');
             $table->timestamps();
         });
     }

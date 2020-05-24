@@ -15,6 +15,9 @@ class CreatePuntuacionCancionTable extends Migration
     {
         Schema::create('puntuacion_cancion', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('cancion_id')->references('id')->on('cancion');
+            $table->tinyInteger('rate');
             $table->timestamps();
         });
     }
