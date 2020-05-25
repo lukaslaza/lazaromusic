@@ -21,7 +21,7 @@ class CreateArtistaCancionTable extends Migration
             $table->timestamps();
 
             $table->unique(['artista_id','cancion_id']);
-            //TODO PREGUNTAR si es posible hacer un unico con un bolean=true y las claves foraneas (cancion) y (artista)
+            //TODO ¿es posible hacer un unico con un bolean=true (principal) y las claves foraneas (cancion) y (artista)
         });
     }
 

@@ -26,7 +26,7 @@ class CreateArtistaTable extends Migration
 
             //TODO como hacer que un usuario solo pueda ser de un artista ¿unico?
 
-            $table->unique(['nacionality', 'alias']);//TODO esto es correcto?
+            $table->unique(['nacionality', 'alias']);//TODO ¿correcto?
         });
     }
 

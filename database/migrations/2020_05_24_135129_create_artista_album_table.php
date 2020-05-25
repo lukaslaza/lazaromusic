@@ -21,6 +21,7 @@ class CreateArtistaAlbumTable extends Migration
             $table->timestamps();
 
             $table->unique(['artista_id', 'album_id']);
+            //TODO ¿es posible hacer un unico con un bolean=true (principal) y las claves foraneas (album) y (artista)
         });
     }
 

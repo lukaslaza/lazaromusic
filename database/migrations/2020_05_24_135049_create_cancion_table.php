@@ -19,11 +19,10 @@ class CreateCancionTable extends Migration
             $table->foreign('album_id')->references('id')->on('album');
             $table->string('archive_url');
             $table->foreign('genero_id')->references('id')->on('genero');
-            $table->tinyInteger('quality');//TODO preguntar si se puede limitar solo a un digito o a X valores
-            $table->boolean('explicit');
+            $table->boolean('explicit')->default(true);
             $table->timestamps();
 
-            $table->unique(['name', 'album_id', 'archive_url']);//todo ¿correcto?
+            $table->unique(['name', 'album_id', 'archive_url']);//TODO ¿correcto?
         });
     }
 

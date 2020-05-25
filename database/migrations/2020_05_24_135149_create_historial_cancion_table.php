@@ -17,7 +17,7 @@ class CreateHistorialCancionTable extends Migration
             $table->bigIncrements('id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('cancion_id')->references('id')->on('cancion');
-            $table->dateTime('date');
+            $table->dateTime('listened_at');
             $table->timestamps();
 
             $table->unique(['user_id', 'cancion_id', 'date']);

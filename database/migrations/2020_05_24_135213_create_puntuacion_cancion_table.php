@@ -19,6 +19,8 @@ class CreatePuntuacionCancionTable extends Migration
             $table->foreign('cancion_id')->references('id')->on('cancion');
             $table->tinyInteger('rate');
             $table->timestamps();
+
+            $table->unique(['user_id', 'cancion_id']);
         });
     }
 

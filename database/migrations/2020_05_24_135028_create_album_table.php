@@ -16,10 +16,11 @@ class CreateAlbumTable extends Migration
         Schema::create('album', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->dateTime('release_date'); //TODO preguntar que es la opcion extra de 'Precision' y la diferencia con date() y si vale la pena usar timestamps()
+            //TODO preguntar que es la opcion extra de 'Precision' y la diferencia con date() y si vale la pena usar timestamps()
+            $table->dateTime('release_at');
             $table->timestamps();
 
-            //TODO pueden repetirse los nombres de las playlist para un usuario?
+            //TODO pueden repetirse los nombres de las playlist para un artista?
         });
     }
 

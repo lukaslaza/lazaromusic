@@ -19,6 +19,8 @@ class CreateListaReproduccionTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->dateTime('date_add');
             $table->timestamps();
+
+            $table->unique(['name', 'user_id']);
         });
     }
 
