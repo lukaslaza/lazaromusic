@@ -15,8 +15,8 @@ class CreateSongsRatingTable extends Migration
     {
         Schema::create('songs_rating', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('song_id')->references('id')->on('songs');
+            $table->foreign('user_id');
+            $table->foreign('song_id');
             $table->tinyInteger('rate');
             $table->timestamps();
 

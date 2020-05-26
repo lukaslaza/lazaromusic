@@ -21,7 +21,7 @@ class CreateArtistsTable extends Migration
             $table->dateTime('born_at');
             $table->string('nacionality');
             $table->text('description');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id');
             $table->timestamps();
 
             $table->unique(['nacionality', 'alias']);

@@ -15,8 +15,8 @@ class CreatePlaylistsSongsTable extends Migration
     {
         Schema::create('playlists_songs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('playlist_id')->references('id')->on('playlists');
-            $table->foreign('song_id')->references('id')->on('songs');
+            $table->foreign('playlist_id');
+            $table->foreign('song_id');
             $table->timestamps();
         });
     }
