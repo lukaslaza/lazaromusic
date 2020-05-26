@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGeneroTable extends Migration
+class CreateArtistsSongsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateGeneroTable extends Migration
      */
     public function up()
     {
-        Schema::create('genero', function (Blueprint $table) {
+        Schema::create('artists_songs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->text('description');
+            $table->foreign('artist_id')->references('id')->on('artists');
+            $table->foreign('song_id')->references('id')->on('songs');
+            $table->boolean('main');
             $table->timestamps();
+
+            $table->unique(['artist_id','song_id']);
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -29,6 +31,6 @@ class CreateGeneroTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genero');
+        Schema::dropIfExists('artists_songs');
     }
 }

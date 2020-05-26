@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePuntuacionCancionTable extends Migration
+class CreatePlaylistsSongsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreatePuntuacionCancionTable extends Migration
      */
     public function up()
     {
-        Schema::create('puntuacion_cancion', function (Blueprint $table) {
+        Schema::create('playlists_songs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('cancion_id')->references('id')->on('cancion');
-            $table->tinyInteger('rate');
+            $table->foreign('playlist_id')->references('id')->on('playlists');
+            $table->foreign('song_id')->references('id')->on('songs');
             $table->timestamps();
-
-            $table->unique(['user_id', 'cancion_id']);
         });
     }
 
@@ -31,6 +28,6 @@ class CreatePuntuacionCancionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puntuacion_cancion');
+        Schema::dropIfExists('playlists_songs');
     }
 }

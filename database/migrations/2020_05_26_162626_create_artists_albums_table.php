@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlbumTable extends Migration
+class CreateArtistsAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateAlbumTable extends Migration
      */
     public function up()
     {
-        Schema::create('album', function (Blueprint $table) {
+        Schema::create('artists_albums', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            //TODO preguntar que es la opcion extra de 'Precision' y la diferencia con date() y si vale la pena usar timestamps()
-            $table->dateTime('release_at');
+            $table->foreign('artist_id')->references('id')->on('artists');
+            $table->foreign('album_id')->references('id')->on('albums');
+            $table->boolean('main');
             $table->timestamps();
 
-            //TODO pueden repetirse los nombres de las playlist para un artista?
+            $table->unique(['artist_id', 'album_id']);
         });
     }
 
@@ -31,6 +31,6 @@ class CreateAlbumTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('album');
+        Schema::dropIfExists('artists_albums');
     }
 }

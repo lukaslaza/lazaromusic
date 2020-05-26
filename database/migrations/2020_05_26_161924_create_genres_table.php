@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCancionListaTable extends Migration
+class CreateGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCancionListaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cancion_lista', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('lista_id')->references('id')->on('lista_reproduccion');
-            $table->foreign('cancion_id')->references('id')->on('cancion');
-            $table->dateTime('created_at');//TODO es necesario teniendo el campo de abajo?
+            $table->string('name')->unique();
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCancionListaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cancion_lista');
+        Schema::dropIfExists('genres');
     }
 }
