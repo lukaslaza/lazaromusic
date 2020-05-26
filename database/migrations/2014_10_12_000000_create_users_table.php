@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('surname');
-            $table->string('email')->unique();
+            $table->string('email',200)->unique();
             $table->string('phone')->unique();
             $table->boolean('is_newsletter')->default(0);
             $table->timestamp('email_verified_at')->nullable();

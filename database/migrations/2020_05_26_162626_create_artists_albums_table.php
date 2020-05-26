@@ -15,8 +15,8 @@ class CreateArtistsAlbumsTable extends Migration
     {
         Schema::create('artists_albums', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('artist_id');
-            $table->foreign('album_id');
+            $table->integer('artist_id')->unsigned();
+            $table->integer('album_id')->unsigned();
             $table->boolean('main');
             $table->timestamps();
 

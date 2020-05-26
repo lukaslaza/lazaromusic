@@ -15,8 +15,8 @@ class CreateSongsHistoryTable extends Migration
     {
         Schema::create('songs_history', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('user_id');
-            $table->foreign('song_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('song_id')->unsigned();
             $table->dateTime('listened_at');
             $table->timestamps();
 

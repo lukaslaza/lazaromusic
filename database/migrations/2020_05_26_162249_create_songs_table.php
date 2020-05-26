@@ -16,9 +16,9 @@ class CreateSongsTable extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->foreign('album_id');
+            $table->integer('album_id')->unsigned();
             $table->string('archive_url');
-            $table->foreign('genre_id');
+            $table->integer('genre_id')->unsigned();
             $table->boolean('explicit')->default(true);
             $table->timestamps();
 

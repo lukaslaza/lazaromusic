@@ -21,11 +21,10 @@ class CreateArtistsTable extends Migration
             $table->dateTime('born_at');
             $table->string('nacionality');
             $table->text('description');
-            $table->foreign('user_id');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             $table->unique(['nacionality', 'alias']);
-            $table->timestamps();
         });
     }
 
